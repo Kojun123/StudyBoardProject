@@ -43,12 +43,8 @@ https://boardproject.shop/  해당 링크를 클릭하시면 홈페이지를 보
   <details>
   <summary><h2><strong>[글 전체조회]</strong></h2></summary>
 
-  - <h3><b>[게스트 상태]</b></h3>
-  ![게시글전체조회-게스트](https://user-images.githubusercontent.com/124665643/218430938-ab3c0fce-10ba-449f-9c8a-dba09cc57325.jpg) <br/><br/><br/>
-  
   - <h3><b>[로그인 상태]</b></h3>
-  ![게시글전체조회-로그인상태](https://user-images.githubusercontent.com/124665643/218430471-e3165c47-5edf-4203-8642-5ab660e781f6.PNG)<br/><br/><br/>
-로그인, 로그아웃 상태에 따라서 홈페이지 오른쪽 상단의 기능들이 변하게 됩니다.<br>
+![게시글전체조회](https://github.com/Kojun123/MyProject01/assets/124665643/a91adee5-22e2-417e-98db-ffc781ddf4d4.PNG) <br/><br/><br/>
 게시글은 최신 작성글 기준으로 정렬됩니다. 제목 옆에는 게시글 내의 작성된 댓글의 개수를 표시하며 조회수는 쿠키를 대조하여 최초 조회시에만 카운트됩니다.
 <br/><br/><br/>
   </details>
@@ -57,10 +53,10 @@ https://boardproject.shop/  해당 링크를 클릭하시면 홈페이지를 보
   <summary><h2><strong>[글 상세조회]</strong></h2></summary>
     
    - <h3><b>[게스트(혹은 권한이 없는) 상태]</b></h3>
-   <img src="https://user-images.githubusercontent.com/124665643/218439177-e04060f8-3526-4a1f-bb8c-38cd0eda5987.PNG"> <br><br>
+   <img src="https://github.com/Kojun123/MyProject01/assets/124665643/1cbc68ee-3ec0-4119-ac74-36795a6fba4a.PNG"> <br><br>
     
    - <h3><b>[로그인 상태]</b></h3>
-   <img src="https://user-images.githubusercontent.com/124665643/218439187-1a851006-3cb8-41d6-aaa4-605d6ddfd9a7.PNG"> <br><br>
+   <img src="https://github.com/Kojun123/MyProject01/assets/124665643/ed9b09fb-adf1-4dfb-bbd1-a75a5dedf43a.PNG"> <br><br>
   게시글의 수정과 삭제, 댓글 작성, 수정, 삭제가 가능하며 <br>
   본인이 작성한 게시글과 댓글이 아니라면 수정/삭제가 나타나지 않으며 게스트 상태에서는 댓글 작성을 할 수 없습니다.<br>
     </details>
@@ -75,7 +71,7 @@ https://boardproject.shop/  해당 링크를 클릭하시면 홈페이지를 보
   <details>
     <summary><h2><strong>[글 검색]</strong></h2></summary>
     <h3><b>[게시글 검색 화면]</b></h3>
-    <img src = "https://user-images.githubusercontent.com/124665643/218444018-0afc8395-578a-48fd-b29c-52c3cb155d00.png"> <br>
+    <img src = "https://github.com/Kojun123/MyProject01/assets/124665643/648e6462-d1cf-451b-a793-91540bf7dd3d.PNG"> <br>
     게시글은 제목, 내용, 작성자 세 가지 조건으로 검색이 가능합니다. 검색 키워드에 포함된 모든 글이 조회됩니다. 
   </details>
   
@@ -92,10 +88,10 @@ https://boardproject.shop/  해당 링크를 클릭하시면 홈페이지를 보
   <details>
     <summary><h2><strong>[회원정보]</strong></h2></summary>
     <h3><b>[회원정보 화면]</b></h3>
-    <img src = "https://github.com/Kojun123/MyProject01/assets/124665643/19166be6-d950-4a50-90c3-f86c94da757f.PNG"> <br>
+    <img src = "https://github.com/Kojun123/MyProject01/assets/124665643/fc55d647-3849-40e6-b830-bee8c165fadd.PNG"> <br>
     회원정보 화면에서 ID, 비밀번호 변경, 가입일, 작성글 검색을 보여줍니다. <br>
     <h3><b>[작성글 검색 화면]</b></h3>
-    <img src = "https://github.com/Kojun123/MyProject01/assets/124665643/091798f3-ebd6-420a-86d7-40f8d5bab8a9.PNG"> <br>
+    <img src = "https://github.com/Kojun123/MyProject01/assets/124665643/13289697-a261-4058-956d-0f826de2220a.PNG"> <br>
     작성한 게시글들을 확인할 수 있고 이동할 수 있습니다.
   </details>
   
