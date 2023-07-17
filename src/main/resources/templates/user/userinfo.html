@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/layout">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<th:block layout:fragment="content">
+
+
+  <h5 style="font-family: 'IBM Plex Sans KR', sans-serif; margin-bottom: 30px;">회원정보</h5>
+
+  <table class="table">
+
+    <thead>
+    <tr>
+      <th scope="col">아이디</th>
+      <td th:text="${user.userName}"></td>
+    </tr>
+    <tr>
+      <th scope="col">비밀번호 변경</th>
+      <td><a th:href="@{/user/findPwd}">비밀번호 변경하러 이동.</a></td>
+    </tr>
+    <tr>
+      <th scope="col">가입일</th>
+      <td th:text="${#temporals.format(user.createdDate,'yyyy-MM-dd HH:mm')}"></td>
+    </tr>
+    <tr>
+      <th scope="col">작성 게시글</th>
+      <td><a th:href="@{/user/postCreated}">작성한 게시글 보기.</a></td>
+    </tr>
+    </thead>
+
+  </table>
+
+</th:block>
+
+</html>

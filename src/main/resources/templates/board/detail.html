@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<meta charset="UTF-8">
+<head>
+<title>게시글 상세 페이지</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+<div class="container">
+    <div>
+        글 고유 아이디 : <p th:text="${board.id}"/> 작성자 : <span><i th:text="${board.user.userName}"> </i></span>
+    </div>
+    <br />
+    <div>
+        제목▼
+        <h3> <p th:text="${board.title}"> </h3>
+    </div>
+    <hr />
+    <div>
+        내용▼
+        <div> <p th:text="${board.content}"></div>
+    </div>
+    <hr />
+    <div class="my-3">
+
+        <a th:href="@{|/board/edit/${board.id}|}" class="btn btn-primary"
+           sec:authorize="isAuthenticated()"
+           th:if="${board.user != null and #authentication.getPrincipal().getUsername() == board.user.userName}"
+           th:text="수정"></a>
+
+        <br/>
+
+        <form id="delete-board" th:action="@{|/board/${board.id}|}" th:method="delete" sec:authorize="isAuthenticated()"
+              th:if="${board.user != null and #authentication.getPrincipal().getUsername() == board.user.userName}">
+            <button type="submit" class="btn btn-danger">삭제</button>
+        </form>
+
+    </div>
+
+    <br />
+    <div class="card">
+<!-- 댓글 표시 !-->
+        <div>
+            <ul th:each="comment : ${comments}" class="list-group">
+                <li class="list-group-item">
+                    [댓글 내용] &nbsp&nbsp<span th:text="${comment.boardComment}"></span>
+                    &nbsp&nbsp [작성자] &nbsp&nbsp<span th:if="${board.user != null}" th:text="${comment.user.userName}"></span>
+                    &nbsp&nbsp [작성일] &nbsp&nbsp<span th:text="${#temporals.format(comment.createdDate, 'yyyy-MM-dd HH:mm')}"></span>&nbsp&nbsp&nbsp&nbsp
+                    <span th:if="${comment.modifiedDate != null}" class="badge bg-light text-dark p-2 text-start mx-3">
+                        [마지막 수정시간] &nbsp
+                        <span th:text="${#temporals.format(comment.modifiedDate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </span>
+
+                    <!-- 댓글 수정 !-->
+
+                            <button type="submit" data-toggle="collapse" data-target="#collapseEdit" class="btn btn-primary my-2" sec:authorize="isAuthenticated()"
+                                    th:if="${comment.user != null and #authentication.getPrincipal().getUsername() == comment.user.userName}"
+                            >수정</button>
+
+                    <form th:action="@{|/comment/edit/${comment.id}|}" th:method="patch">
+                        <div class = "collapse" id="collapseEdit">
+                            <textarea th:name="boardComment" class="form-control" id="comment-content" rows="3"></textarea>
+                            <button type="submit" class="btn btn-outline-primary bi bi-pencil-square"> 수정 완료</button>
+                        </div>
+
+                    </form>
+
+                    <!-- 댓글 삭제 !-->
+                    <form id="CommentDeleteForm" th:action="@{|/comment/delete/${comment.id}|}" th:method="delete" sec:authorize="isAuthenticated()"
+                          th:if="${comment.user != null and #authentication.getPrincipal().getUsername() == comment.user.userName}">
+                        <button type="submit" class="btn btn-danger">삭제</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 댓글 등록 !-->
+        <form th:action="@{|/board/${board.id}/comment|}" th:method="post">
+            <div class="card-body">
+                <textarea sec:authorize="isAnonymous()" disabled th:name="boardComment" rows="15" class="form-control"></textarea>
+                <textarea sec:authorize="isAuthenticated()" th:name="boardComment" rows="15" class="form-control"></textarea>
+                <input type="submit" value="답변등록" class="btn btn-primary my-2">
+            </div>
+        </form>
+    </div>
+    <br/>
+</div>
+</th:block>
+</body>
+</html>

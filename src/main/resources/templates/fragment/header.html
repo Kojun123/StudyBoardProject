@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <meta charset="utf-8">
+  <meta name="_csrf" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:content="${_csrf.headerName}">
+
+<th:block th:fragment="headerFragment">
+<!-- nav -->
+<nav class="navbar navbar-expand-md navbar-dark bg-info" style="margin-bottom:100px;">
+  <div
+          class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-nav mr-auto">
+        <!--
+      <li class="nav-item active"><a class="nav-link" href="#">메뉴1</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">메뉴2</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">메뉴3</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">메뉴4</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">메뉴5</a></li>
+      !-->
+    </ul>
+  </div>
+
+<div class="mx-auto order-0">
+    <a class="navbar-brand mx-auto" href="/" style="font-family: 'Jua', sans-serif;">Board_Project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target=".dual-collapse2">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+          <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+          <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/signup}">회원가입</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/board/saveBoard}">글쓰기</a>
+          <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/userinfo}">회원정보</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</th:block>
+
+</html>

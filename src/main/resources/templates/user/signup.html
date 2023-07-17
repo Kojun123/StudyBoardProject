@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/layout">
+<head>
+    <meta charset="UTF-8">
+</head>
+<th:block layout:fragment="content">
+
+  <div class="my-3 border-bottom">
+    <div>
+      <h4>회원가입</h4>
+    </div>
+  </div>
+
+  <form th:action="@{/user/signup}" th:object="${userCreateForm}" th:method="post">
+    <div class="form-group">
+      <label th:for="userName">사용자 ID</label>
+      <input type="text" th:field="*{userName}" class="form-control" placeholder="아이디를 입력해주세요." th:class="${#fields.hasErrors('userName')}? 'form-control fieldError' : 'form-control'">
+      <p th:if = "${#fields.hasErrors('userName')}" class="alert alert-danger" role="alert" th:errors="*{userName}">error</p>
+    </div>
+
+    <div class="mb-3">
+      <label th:for="password1" class="form-label">비밀번호</label>
+      <input type="password" th:field="*{password1}" class="form-control" placeholder="비밀번호를 입력해주세요." th:class="${#fields.hasErrors('password1')}? 'form-control fieldError' : 'form-control'">
+      <p th:if = "${#fields.hasErrors('password1')}" class="alert alert-danger" role="alert" th:errors="*{password1}">error</p>
+    </div>
+
+    <div class="mb-3">
+      <label th:for="password2" class="form-label">비밀번호 확인</label>
+      <input type="password" th:field="*{password2}" class="form-control" placeholder="비밀번호를 확인해주세요." th:class="${#fields.hasErrors('password2')}? 'form-control fieldError' : 'form-control'">
+      <p th:if = "${#fields.hasErrors('password2')}" class="alert alert-danger" role="alert" th:errors="*{password2}">error</p>
+
+    </div>
+
+    <div class="mb-3">
+      <label th:for="email" class="form-label">이메일</label>
+      <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요." th:class="${#fields.hasErrors('email')}? 'form-control fieldError' : 'form-control'">
+      <p th:if = "${#fields.hasErrors('email')}" class="alert alert-danger" role="alert" th:errors="*{email}">error</p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">회원가입</button>
+  </form>
+
+</th:block>
+</html>

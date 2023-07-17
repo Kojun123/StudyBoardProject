@@ -1,0 +1,31 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+        default-page-size: 5
+
+  datasource:
+    url: jdbc:h2:~/project_blog
+    username: sa
+    password: 1120
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # 언더스코어 방식으로 만들지 않겠다는 설정, 테이블 명도 클래스 명과 동일하게 만들어지기에 테이블명 따로 지정하는게 좋음.
+
+    show-sql: true
