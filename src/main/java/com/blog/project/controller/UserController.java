@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @PostMapping("/signup") // 회원 가입
-    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult, Model model){
+    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()) {
             return "user/signup";

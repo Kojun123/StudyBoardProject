@@ -2,28 +2,27 @@ package com.blog.project.dto.board;
 
 import com.blog.project.domain.Board;
 import com.blog.project.domain.Comment;
-import com.blog.project.domain.Users;
 import com.blog.project.dto.comment.CommentDto;
 import com.blog.project.dto.user.UserDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @Setter
 public class BoardDto {
 
     private Long id;
-    @NotEmpty
+    @NotEmpty(message = "제목은 비울 수 없습니다.")
     private String title;
-    @NotEmpty
+    @NotEmpty(message = "내용은 필수 입니다.")
     private String content;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;

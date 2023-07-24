@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -51,15 +52,21 @@ public class BoardController {
 
     @GetMapping("/board/saveBoard") // 게시글 작성 페이지
     @PreAuthorize("isAuthenticated()") // 로그인 되어있지 않은 경우 로그인 페이지로 이동, 로그인 후에는 다시 돌아오게됨.
-    public String saveBoard(){
+    public String saveBoard(Model model){
+        model.addAttribute("boardDto",new BoardDto());
         return "board/save";
     }
 
     @PostMapping("/board") // [post]게시글 작성
     @PreAuthorize("isAuthenticated()")
-    public String Save(@Valid BoardDto board, Model model, Principal principal){
+    public String Save(@Valid BoardDto boardDto, BindingResult bindingResult, Model model, Principal principal){
+
+        if (bindingResult.hasErrors()) {
+            return "board/save";
+        }
+
         UserDto user = userService.getUser(principal.getName());
-        boardService.boardSave(board,user);
+        boardService.boardSave(boardDto,user);
         model.addAttribute("message","글 작성 성공");
         model.addAttribute("url","/board");
         return "board/writeSuccess";

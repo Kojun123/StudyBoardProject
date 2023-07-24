@@ -10,12 +10,16 @@
 <div class="container p-4 w-70 rounded shadow">
     <h5 style="font-family: 'IBM Plex Sans KR', sans-serif; margin-bottom: 30px;">글쓰기</h5>
 
-    <form action="/board" th:method="post">
+    <form th:action="@{/board}"  th:object="${boardDto}" th:method="post">
         <div class="form-group">
-            <input type="text" name="title" class="form-control" placeholder="Enter title">
+            <label th:for="title">제목</label>
+            <input type="text" th:field="*{title}" class="form-control" placeholder="Enter title" th:class="${#fields.hasErrors('title')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('title')}" class="alert alert-danger" role="alert" th:errors="*{title}">error</p>
         </div>
         <div class="form-group">
-            <textarea id="summernote" name="content" class="form-control"></textarea>
+            <label th:for="content">내용</label>
+            <textarea id="summernote" th:field="*{content}" class="form-control" placeholder="내용을 입력해주세요." th:class="${#fields.hasErrors('title')}? 'form-control fieldError' : 'form-control'"></textarea>
+            <p th:if="${#fields.hasErrors('content')}" class="alert alert-danger" role="alert" th:errors="*{content}">error</p>
         </div>
         <button type="submit" class="btn btn-primary col-md-4" style="margin-top: 30px;">글쓰기</button>
     </form>

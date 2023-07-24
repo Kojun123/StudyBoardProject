@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.blog'
-version = '0.0.4' // 배포 버전
+version = '0.0.01' // 배포 버전
 sourceCompatibility = '11'
 
 configurations {
