@@ -34,6 +34,9 @@ public class CommentController {
     @PreAuthorize("isAuthenticated()")
     public String CreateBoardComment(@PathVariable("id") Long id, @Valid CommentDto comment, Principal principal){
         UserDto user = userService.getUser(principal.getName());
+        if(comment.getUser() == null){
+            throw new BadRequest("댓글 작성 권한이 없습니다.");
+        }
         commentService.CommentSave(id,comment,user);
         return String.format("redirect:/board/detail/%s",id);
     }

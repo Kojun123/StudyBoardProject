@@ -110,6 +110,8 @@ public class BoardController {
         return "board/detail";
     }
 
+
+
     @GetMapping("/board/edit/{id}") // 게시글 수정 페이지
     @PreAuthorize("isAuthenticated()")
     public String BoardEdit(@PathVariable Long id, Model model,Principal principal){
