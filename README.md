@@ -1,4 +1,3 @@
- 
 # BoardProject
 웹 게시판의 작성에 필요한 기술을 공부하고자 하여 직접 만들어본 첫 프로젝트 입니다. <br/><br/><br/>
 https://boardproject.shop/  해당 링크를 클릭하시면 홈페이지를 보실 수 있습니다.  <br/><br/><br/>
